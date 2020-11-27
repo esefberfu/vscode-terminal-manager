@@ -1,169 +1,157 @@
 {
-	"name": "terminal-manager",
-	"displayName": "Terminal Manager",
-	"description": "Manage all terminals",
-	"version": "1.2.1",
-	"publisher": "esef-berfu",
-	"enableProposedApi": true,
-	"engines": {
-		"vscode": "^1.46.0"
-	},
-	"repository": "https://github.com/esefberfu/vscode-terminal-manager",
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onView:terminalManager"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"languages": [
-			{
-				"id": "command",
-				"extensions": [
-					".command"
-				],
-				"aliases": [
-					"Command",
-					"command"
-				]
-			}
-		],
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "terminal-manager",
-					"title": "Terminal Manager",
-					"icon": "resources/dark/terminal.svg"
-				}
-			],
-      "explorer": [{
-          "id": "terminalManager",
-          "name": "Terminal Manager"
-      }]
-		},
-		"views": {
-			"explorer": [{
-				"id": "terminalManager",
-				"name": "Terminal Manager",
-				"icon": "resources/dark/terminal.svg",
-				"contextualTitle": "Terminal Manager"
-			}]
-		},
-		"commands": [
-			{
-				"command": "terminalManager.runInTerminal",
-				"title": "Run Commands in Terminal"
-			},
-			{
-				"command": "terminalManager.refresh",
-				"title": "Refresh",
-				"icon": {
-					"light": "resources/light/refresh.svg",
-					"dark": "resources/dark/refresh.svg"
-				}
-			},
-			{
-				"command": "terminalManager.hideTerminalPanel",
-				"title": "Hide",
-				"icon": {
-					"light": "resources/light/visibility.svg",
-					"dark": "resources/dark/visibility.svg"
-				}
-			},
-			{
-				"command": "terminalManager.createTerminal",
-				"title": "Add",
-				"icon": {
-					"light": "resources/light/add.svg",
-					"dark": "resources/dark/add.svg"
-				}
-			},
-			{
-				"command": "terminalManager.showTerminalMinimized",
-				"title": "Minimize",
-				"icon": {
-					"light": "resources/light/minimize.svg",
-					"dark": "resources/dark/minimize.svg"
-				}
-			},
-			{
-				"command": "terminalManager.deleteTerminal",
-				"title": "Delete",
-				"icon": {
-					"light": "resources/light/delete.svg",
-					"dark": "resources/dark/delete.svg"
-				}
-			},
-			{
-				"command": "terminalManager.showTerminal",
-				"title": "Show"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "terminalManager.runOnTerminal",
-					"group": "MyGroup"
-				}
-			],
-			"view/title": [
-				{
-					"command": "terminalManager.refresh",
-					"when": "view == terminalManager",
-					"group": "navigation"
-				},
-				{
-					"command": "terminalManager.createTerminal",
-					"when": "view == terminalManager",
-					"group": "navigation"
-				},
-				{
-					"command": "terminalManager.hideTerminalPanel",
-					"when": "view == terminalManager",
-					"group": "navigation"
-				}
-			],
-			"view/item/context": [
-				{
-					"command": "terminalManager.showTerminalMinimized",
-					"when": "view == terminalManager",
-					"group": "inline"
-				},
-				{
-					"command": "terminalManager.deleteTerminal",
-					"when": "view == terminalManager",
-					"group": "inline"
-				},
-				{
-					"command": "terminalManager.showTerminal",
-					"when": "view == terminalManager "
-				}
-			]
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"lint": "eslint . --ext .ts,.tsx"
-	},
-	"devDependencies": {
-		"@types/mkdirp": "^0.5.2",
-		"@types/node": "^12.12.0",
-		"@types/rimraf": "^2.0.2",
-		"@types/vscode": "^1.45.0",
-		"typescript": "^4.0.2",
-		"@typescript-eslint/eslint-plugin": "^3.0.2",
-		"@typescript-eslint/parser": "^3.0.2",
-		"eslint": "^7.1.0"
-	},
-	"dependencies": {
-		"ftp": "^0.3.10",
-		"jsonc-parser": "^0.4.2",
-		"minimist": "^0.2.1",
-		"mkdirp": "^0.5.1",
-		"rimraf": "^2.6.2",
-		"ssh2-sftp-client": "^5.3.2"
-	}
+    "name": "terminal-manager",
+    "displayName": "Terminal Manager",
+    "description": "Manage all terminals",
+    "version": "1.2.1",
+    "publisher": "esef-berfu",
+    "enableProposedApi": true,
+    "engines": {
+        "vscode": "^1.46.0"
+    },
+    "repository": "https://github.com/esefberfu/vscode-terminal-manager",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onView:terminalManager"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [{
+            "id": "command",
+            "extensions": [
+                ".command"
+            ],
+            "aliases": [
+                "Command",
+                "command"
+            ]
+        }],
+        "viewsContainers": {
+            "activitybar": [{
+                "id": "terminal-manager",
+                "title": "Terminal Manager",
+                "icon": "resources/dark/terminal.svg"
+            }]
+        },
+        "views": {
+            "explorer": [{
+                "id": "terminalManager",
+                "name": "Terminal Manager",
+                "icon": "resources/dark/terminal.svg",
+                "contextualTitle": "Terminal Manager"
+            }]
+        },
+        "commands": [{
+                "command": "terminalManager.runInTerminal",
+                "title": "Run Commands in Terminal"
+            },
+            {
+                "command": "terminalManager.refresh",
+                "title": "Refresh",
+                "icon": {
+                    "light": "resources/light/refresh.svg",
+                    "dark": "resources/dark/refresh.svg"
+                }
+            },
+            {
+                "command": "terminalManager.hideTerminalPanel",
+                "title": "Hide",
+                "icon": {
+                    "light": "resources/light/visibility.svg",
+                    "dark": "resources/dark/visibility.svg"
+                }
+            },
+            {
+                "command": "terminalManager.createTerminal",
+                "title": "Add",
+                "icon": {
+                    "light": "resources/light/add.svg",
+                    "dark": "resources/dark/add.svg"
+                }
+            },
+            {
+                "command": "terminalManager.showTerminalMinimized",
+                "title": "Minimize",
+                "icon": {
+                    "light": "resources/light/minimize.svg",
+                    "dark": "resources/dark/minimize.svg"
+                }
+            },
+            {
+                "command": "terminalManager.deleteTerminal",
+                "title": "Delete",
+                "icon": {
+                    "light": "resources/light/delete.svg",
+                    "dark": "resources/dark/delete.svg"
+                }
+            },
+            {
+                "command": "terminalManager.showTerminal",
+                "title": "Show"
+            }
+        ],
+        "menus": {
+            "explorer/context": [{
+                "command": "terminalManager.runOnTerminal",
+                "when": "view == terminalManager",
+                "group": "MyGroup"
+            }],
+            "view/title": [{
+                    "command": "terminalManager.refresh",
+                    "when": "view == terminalManager",
+                    "group": "navigation"
+                },
+                {
+                    "command": "terminalManager.createTerminal",
+                    "when": "view == terminalManager",
+                    "group": "navigation"
+                },
+                {
+                    "command": "terminalManager.hideTerminalPanel",
+                    "when": "view == terminalManager",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [{
+                    "command": "terminalManager.showTerminalMinimized",
+                    "when": "view == terminalManager",
+                    "group": "inline"
+                },
+                {
+                    "command": "terminalManager.deleteTerminal",
+                    "when": "view == terminalManager",
+                    "group": "inline"
+                },
+                {
+                    "command": "terminalManager.showTerminal",
+                    "when": "view == terminalManager "
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint . --ext .ts,.tsx"
+    },
+    "devDependencies": {
+        "@types/mkdirp": "^0.5.2",
+        "@types/node": "^12.12.0",
+        "@types/rimraf": "^2.0.2",
+        "@types/vscode": "^1.45.0",
+        "typescript": "^4.0.2",
+        "@typescript-eslint/eslint-plugin": "^3.0.2",
+        "@typescript-eslint/parser": "^3.0.2",
+        "eslint": "^7.1.0"
+    },
+    "dependencies": {
+        "ftp": "^0.3.10",
+        "jsonc-parser": "^0.4.2",
+        "minimist": "^0.2.1",
+        "mkdirp": "^0.5.1",
+        "rimraf": "^2.6.2",
+        "ssh2-sftp-client": "^5.3.2"
+    }
 }
