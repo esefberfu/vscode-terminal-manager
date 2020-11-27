@@ -2,7 +2,7 @@
 	"name": "terminal-manager",
 	"displayName": "Terminal Manager",
 	"description": "Manage all terminals",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"publisher": "esef-berfu",
 	"enableProposedApi": true,
 	"engines": {
@@ -39,14 +39,12 @@
 			]
 		},
 		"views": {
-			"terminal-manager": [
-				{
-					"id": "terminalManager",
-					"name": "",
-					"icon": "resources/dark/terminal.svg",
-					"contextualTitle": "Terminal Manager"
-				}
-			]
+			"explorer": [{
+				"id": "terminalManager",
+				"name": "Terminal Manager",
+				"icon": "resources/dark/terminal.svg",
+				"contextualTitle": "Terminal Manager"
+			}]
 		},
 		"commands": [
 			{
