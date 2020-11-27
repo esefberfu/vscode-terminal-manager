@@ -48,8 +48,8 @@
 		},
 		"commands": [
 			{
-				"command": "terminalManager.runOnTerminal",
-				"title": "RunOnTerm"
+				"command": "terminalManager.runInTerminal",
+				"title": "Run Commands in Terminal"
 			},
 			{
 				"command": "terminalManager.refresh",
