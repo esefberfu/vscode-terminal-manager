@@ -26,7 +26,6 @@ class TerminalManagerProvider {
         const input = await vscode.window.showInputBox({
             placeHolder: 'Enter name of the terminal:'
         });
-        await this.fullScreen();
         let shellPath = '';
         if (os.platform() === 'darwin')
             shellPath = '/bin/zsh';
@@ -39,7 +38,8 @@ class TerminalManagerProvider {
             shellArgs: [],
             name: (input) ? input : 'Terminal'
         });
-        terminal.show(true);
+        await terminal.show(true);
+        this.fullScreen();
         this.refresh();
         return terminal;
     }

@@ -31,7 +31,6 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		const input = await vscode.window.showInputBox({
 			placeHolder:'Enter name of the terminal:'
 		});
-		await this.fullScreen();
 
 		let shellPath = '';
 		if(os.platform() === 'darwin')
@@ -46,7 +45,8 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 			shellArgs: [],
 			name: (input) ? input : 'Terminal'
 		});
-		terminal.show(true);
+		await terminal.show(true);
+		this.fullScreen();
 		this.refresh();
 		return terminal;
 	}
