@@ -17,6 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.commands.registerCommand('terminalManager.deleteTerminal', (terminal: Terminal) => terminalManagerProvider.closeTerminal(terminal));
 	vscode.commands.registerCommand('terminalManager.showTerminal', (terminal: Terminal) => terminalManagerProvider.showTerminal(terminal));
 	vscode.commands.registerCommand('terminalManager.showTerminalMinimized', (terminal: Terminal) => terminalManagerProvider.showTerminalMinimized(terminal));
+	vscode.commands.registerCommand('terminalManager.hideTerminalPanel', (terminal: Terminal) => terminalManagerProvider.hideTerminalPanel());
 
 	vscode.window.onDidOpenTerminal((terminal) => {
 		terminalManagerProvider.refresh();

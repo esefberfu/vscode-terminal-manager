@@ -66,6 +66,10 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		this.fullScreen();
 	}
 
+	async hideTerminalPanel(): Promise<void> {
+		await vscode.commands.executeCommand('workbench.action.togglePanel');
+	}
+
 	async fullScreen(): Promise<void> {
 		await vscode.commands.executeCommand('workbench.action.togglePanel');
 		await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');

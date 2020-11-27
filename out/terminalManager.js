@@ -55,6 +55,9 @@ class TerminalManagerProvider {
         terminal.vsTerminal.show(true);
         this.fullScreen();
     }
+    async hideTerminalPanel() {
+        await vscode.commands.executeCommand('workbench.action.togglePanel');
+    }
     async fullScreen() {
         await vscode.commands.executeCommand('workbench.action.togglePanel');
         await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
