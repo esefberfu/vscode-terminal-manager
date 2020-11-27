@@ -36,7 +36,11 @@
 					"title": "Terminal Manager",
 					"icon": "resources/dark/terminal.svg"
 				}
-			]
+			],
+      "explorer": [{
+          "id": "terminalManager",
+          "name": "Terminal Manager"
+      }]
 		},
 		"views": {
 			"explorer": [{
