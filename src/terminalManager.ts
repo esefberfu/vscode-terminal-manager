@@ -21,7 +21,7 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		this._onDidChangeTreeData.fire();
 	}
 
-	async runOnTerminal(uri:vscode.Uri): Promise<void> {
+	async runInTerminal(uri:vscode.Uri): Promise<void> {
 		let terminal = await this.createTerminal();
 		let cmd = await readFile(uri.fsPath);
 		terminal.sendText(cmd.toString());
@@ -31,7 +31,6 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		const input = await vscode.window.showInputBox({
 			placeHolder:'Enter name of the terminal:'
 		});
-		await this.fullScreen();
 
 		let shellPath = '';
 		if(os.platform() === 'darwin')
@@ -46,7 +45,8 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 			shellArgs: [],
 			name: (input) ? input : 'Terminal'
 		});
-		terminal.show(true);
+		await terminal.show(true);
+		this.fullScreen();
 		this.refresh();
 		return terminal;
 	}
@@ -56,15 +56,30 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		this.refresh();
 	}
 
+	async showTerminalMinimized(terminal: Terminal): Promise<void> {
+		terminal.vsTerminal.show(true);
+		await this.minimize()
+	}
+
 	async showTerminal(terminal: Terminal): Promise<void> {
 		terminal.vsTerminal.show(true);
 		this.fullScreen();
+	}
+
+	async hideTerminalPanel(): Promise<void> {
+		await vscode.commands.executeCommand('workbench.action.togglePanel');
 	}
 
 	async fullScreen(): Promise<void> {
 		await vscode.commands.executeCommand('workbench.action.togglePanel');
 		await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
 	}
+
+	async minimize(): Promise<void> {
+		await vscode.commands.executeCommand('workbench.action.toggleEditorVisibility');
+	}
+
+
 
 	renameTerminal(terminal: Terminal): void {
 

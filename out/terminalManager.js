@@ -17,7 +17,7 @@ class TerminalManagerProvider {
     refresh() {
         this._onDidChangeTreeData.fire();
     }
-    async runOnTerminal(uri) {
+    async runInTerminal(uri) {
         let terminal = await this.createTerminal();
         let cmd = await readFile(uri.fsPath);
         terminal.sendText(cmd.toString());
@@ -26,7 +26,6 @@ class TerminalManagerProvider {
         const input = await vscode.window.showInputBox({
             placeHolder: 'Enter name of the terminal:'
         });
-        await this.fullScreen();
         let shellPath = '';
         if (os.platform() === 'darwin')
             shellPath = '/bin/zsh';
@@ -39,7 +38,8 @@ class TerminalManagerProvider {
             shellArgs: [],
             name: (input) ? input : 'Terminal'
         });
-        terminal.show(true);
+        await terminal.show(true);
+        this.fullScreen();
         this.refresh();
         return terminal;
     }
@@ -47,13 +47,23 @@ class TerminalManagerProvider {
         terminal.vsTerminal.dispose();
         this.refresh();
     }
+    async showTerminalMinimized(terminal) {
+        terminal.vsTerminal.show(true);
+        await this.minimize();
+    }
     async showTerminal(terminal) {
         terminal.vsTerminal.show(true);
         this.fullScreen();
     }
+    async hideTerminalPanel() {
+        await vscode.commands.executeCommand('workbench.action.togglePanel');
+    }
     async fullScreen() {
         await vscode.commands.executeCommand('workbench.action.togglePanel');
         await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
+    }
+    async minimize() {
+        await vscode.commands.executeCommand('workbench.action.toggleEditorVisibility');
     }
     renameTerminal(terminal) {
     }
