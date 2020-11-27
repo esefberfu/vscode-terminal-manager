@@ -47,6 +47,10 @@ class TerminalManagerProvider {
         terminal.vsTerminal.dispose();
         this.refresh();
     }
+    async showTerminalMinimized(terminal) {
+        terminal.vsTerminal.show(true);
+        await this.minimize();
+    }
     async showTerminal(terminal) {
         terminal.vsTerminal.show(true);
         this.fullScreen();
@@ -54,6 +58,9 @@ class TerminalManagerProvider {
     async fullScreen() {
         await vscode.commands.executeCommand('workbench.action.togglePanel');
         await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
+    }
+    async minimize() {
+        await vscode.commands.executeCommand('workbench.action.toggleEditorVisibility');
     }
     renameTerminal(terminal) {
     }

@@ -70,6 +70,14 @@
 				}
 			},
 			{
+				"command": "terminalManager.showTerminalMinimized",
+				"title": "Minimize",
+				"icon": {
+					"light": "resources/light/minimize.svg",
+					"dark": "resources/dark/minimize.svg"
+				}
+			},
+			{
 				"command": "terminalManager.deleteTerminal",
 				"title": "Delete",
 				"icon": {
@@ -102,6 +110,11 @@
 				}
 			],
 			"view/item/context": [
+				{
+					"command": "terminalManager.showTerminalMinimized",
+					"when": "view == terminalManager",
+					"group": "inline"
+				},
 				{
 					"command": "terminalManager.deleteTerminal",
 					"when": "view == terminalManager",

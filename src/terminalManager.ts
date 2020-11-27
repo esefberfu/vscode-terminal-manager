@@ -56,6 +56,11 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		this.refresh();
 	}
 
+	async showTerminalMinimized(terminal: Terminal): Promise<void> {
+		terminal.vsTerminal.show(true);
+		await this.minimize()
+	}
+
 	async showTerminal(terminal: Terminal): Promise<void> {
 		terminal.vsTerminal.show(true);
 		this.fullScreen();
@@ -65,6 +70,12 @@ export class TerminalManagerProvider implements vscode.TreeDataProvider<Terminal
 		await vscode.commands.executeCommand('workbench.action.togglePanel');
 		await vscode.commands.executeCommand('workbench.action.toggleMaximizedPanel');
 	}
+
+	async minimize(): Promise<void> {
+		await vscode.commands.executeCommand('workbench.action.toggleEditorVisibility');
+	}
+
+
 
 	renameTerminal(terminal: Terminal): void {
 
